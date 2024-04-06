@@ -1,0 +1,53 @@
+SELECT*
+FROM pp..Sales
+
+--Day of the week trend
+
+SELECT DATENAME(DW, order_date), COUNT(order_id)
+FROM Sales
+GROUP BY DATENAME(DW, order_date)
+
+
+--Hourly trend
+SELECT DATEPART(HOUR,order_time), COUNT(DISTINCT order_id)
+FROM Sales
+GROUP BY DATEPART(HOUR,order_time)
+ORDER BY DATEPART(HOUR,order_time)
+
+--percentage of total sales (pizza category)
+
+SELECT pizza_category,SUM(total_price) AS TotalSales, (SUM(total_price)/ (SELECT SUM(total_price) FROM Sales))*100 AS PizzaPercentage
+FROM Sales
+WHERE DATEPART(MONTH,order_date) = 1
+GROUP BY pizza_category
+ORDER BY pizza_category
+
+--percentage of total sales (pizza size)
+SELECT pizza_size,CAST(SUM(total_price) AS DECIMAL(10,2)) AS TotalSales, CAST((SUM(total_price)/ (SELECT SUM(total_price) FROM Sales))*100 AS DECIMAL(10,2)) AS PizzaPercentage
+FROM Sales
+GROUP BY pizza_size 
+ORDER BY PizzaPercentage
+
+
+--Total number of pizzas sold per category
+
+SELECT pizza_category, SUM(quantity) AS TotPizzasSold
+FROM Sales
+GROUP BY pizza_category
+ORDER BY TotPizzasSold
+
+
+--top 5 most sold pizza variety
+
+SELECT TOP 5 pizza_name, SUM(quantity) AS pizzaSold
+FROM Sales
+GROUP BY pizza_name
+ORDER BY pizzaSold DESC
+
+
+--top 5 least sold pizza variety
+
+SELECT TOP 5 pizza_name, SUM(quantity) AS pizzaSold
+FROM Sales
+GROUP BY pizza_name
+ORDER BY pizzaSold ASC
