@@ -5,13 +5,7 @@ FROM HrDB..hrdata
 
 /* OBJECTIVE:
 Creating a database in SQL Server Management Studio, writing SQL query to QA the HR Analytics Dashboard developed using Tableau Desktop and MS Power BI.
-
-	Function Validation – Test each feature work as per the requirement. To verify all the filters and Action filters on the report as per the requirement.
-
-	Data Validation – Check the accuracy and quality of data. To match the values in Tableau and Power BI reports with SQL queries.
-
-
-	Test Document – Create a Test document that will contain the screenshots and queries used to test the report.*/
+*/
 
 --QUERIES:
 --EMPLOYEE COUNT:
