@@ -159,8 +159,7 @@ WHERE department = 'Sales'
 
 SELECT (COUNT(emp_no) - (SELECT COUNT(attrition) FROM HrDB..hrdata WHERE attrition = 'Yes' AND education_field = 'Medical')) AS active_employees
 FROM HrDB..hrdata
-WHERE education_field = 'Medical
-'
+WHERE education_field = 'Medical'
 
 --Active employees Education wise: 
 
