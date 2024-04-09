@@ -1,3 +1,5 @@
+'''
+
 SELECT*
 FROM HrDB..hrdata
 
@@ -308,3 +310,5 @@ ADD age_group_num int
 UPDATE HrDB..hrdata
 SET age_group_num = 1
 WHERE age_band = 'Under 25';
+
+'''
